@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React,{useState,useEffect} from 'react'
 import {
   View,
   Text,
@@ -9,63 +9,30 @@ import {
   Image,
 } from "react-native";
 
+import axios from "axios";
+
 const HomeTopMovers = () => {
-  const [coins, setCoins] = useState([
-    {
-      id: 1,
-      name: "Ethereum",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/eth.png",
-      nick: "Eth",
-      price: 123,
-      drop: -12,
-    },
-    {
-      id: 2,
-      name: "Ripple",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/xrp.png",
-      nick: "xrp",
-      price: 123,
-      drop: -12,
-    },
-    {
-      id: 3,
-      name: "Bitcoin Cash",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/bch.png",
-      nick: "Bch",
-      price: 123,
-      drop: -12,
-    },
-    {
-      id: 4,
-      name: "Litecoin",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/ltc.png",
-      nick: "Ltc",
-      price: 123,
-      drop: -12,
-    },
-    {
-      id: 5,
-      name: "Stellar Lumens",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/xlm.png",
-      nick: "Xlm",
-      price: 123,
-      drop: -12,
-    },
-    {
-      id: 6,
-      name: "Bitcoin",
-      icon:
-        "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/128/color/btc.png",
-      nick: "Btc",
-      price: 123,
-      drop: -12,
-    },
-  ]);
+
+  const [data, setData] = useState([]);
+  var prc;
+
+
+  useEffect(() => {
+    axios
+      .get(`https://api.coingecko.com/api/v3/coins/`)
+      .then(function (response) {
+        // console.log(response);
+        setData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+
+   /*  #TODO Fetch real data  */
+
+  
   return (
     <View>
       <Text
@@ -83,7 +50,10 @@ const HomeTopMovers = () => {
         showsHorizontalScrollIndicator={false}
         style={{ paddingTop: 20 }}
       >
-        {coins.map((coin) => (
+        {data.map((coin) => (
+          
+
+
           <View key={coin.id}>
             <View
               style={{
@@ -98,30 +68,34 @@ const HomeTopMovers = () => {
             > 
             <View>
                 <Image
-                source={{uri:coin.icon}}
+                source={{uri: coin.image.large}}
                 style={{width:35,height:35,marginTop:15}}/>
             </View>
 
-            <View style={{marginTop:15,flexDirection:'row',alignItems:'center'}}>
+            <View style={{marginTop:15,flexDirection:'row',alignItems:'center',position:"relative" }}>
                   <Text style={{
-                              fontSize: 16,
-                              fontWeight: "500",
-                            }}>{coin.nick}</Text>
-                  <Text style={{
-                              fontSize: 12,
-                              fontWeight: "400",
-                              paddingLeft:5,
-                              color: "#5D616D",
-                            }}>${coin.price}</Text>
+                              fontSize: 13,
+                              fontWeight: "500"
+                            }}>{coin.name}</Text>
+                  
               </View>
+
+              <Text style={{
+                              fontSize: 14,
+                              fontWeight: "400",
+                              
+                              color: "#5D616D",
+                              paddingTop: 5
+                            }}>${coin.market_data.current_price.usd}</Text>
               
-              <View style={{paddingTop:15}}>
+              <View style={{paddingTop:10}}>
               <Text style={{
                               fontSize: 30,
                               fontWeight: "400",
                               paddingLeft:5,
-                              color: "red",
-                            }}>${coin.drop}%</Text>
+                              color:  coin.market_data.price_change_percentage_24h < 0 ? "red" : "green"  ,
+                            }}>
+                              {prc=coin.market_data.price_change_percentage_24h ,  prc.toFixed(2)}%</Text>
               </View>
 
               

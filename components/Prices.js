@@ -13,7 +13,6 @@ const Prices = () => {
       .then(function (response) {
         // console.log(response);
         setData(response.data);
-        console.log("data is ", data);
       })
       .catch(function (error) {
         console.log(error);
@@ -70,7 +69,7 @@ const Prices = () => {
                     </View>
 
                     {data.map((coin) => (
-            <View key={coin.id}>
+            <View key={coin.symbol}>
               <View
                 style={{
                   paddingTop: 25,
@@ -95,8 +94,8 @@ const Prices = () => {
                   <Text style={{fontSize:17,fontWeight:"400"}}>{coin.name}</Text>
                 </View>
                 <View style={{ paddingLeft: 15 }}>
-                  <Text style={{fontSize:16,fontWeight:'300'}}>$0.00</Text>
-                  <Text style={{fontSize:14,fontWeight:"300",color:"#5d616d"}}>0 {coin.symbol}</Text>
+                  <Text style={{fontSize:16,fontWeight:'300',alignSelf:'flex-end'}}>{coin.market_data.current_price.eur} €</Text>
+                  <Text style={{fontSize:14,fontWeight:"300",color:"#5d616d",alignSelf:'flex-end'}}>0 {coin.symbol}</Text>
                 </View>
               </View>
             </View>

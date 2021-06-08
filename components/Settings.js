@@ -12,13 +12,18 @@ import {
 import SettingsAccount from "./SettingsAccount";
 import SettingsSecurity from "./SettingsSecurity";
 
+
+ /*  #TODO if login show Settings if not show login/register page  */
+
+
+
 const Settings = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView style={{ flex: 1 }}>
       <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
             <View>
-                <Text style={{color:"#5d616f",fontSize:14,fontWeight:"500"}}>jdfed77@gmail.com</Text>
+                <Text style={{color:"#5d616f",fontSize:14,fontWeight:"500"}}>THE USER EMAIL</Text>
                 <Text style={{color:"090c0d",fontSize:29,fontWeight:"bold",paddingTop:5}}>AR</Text>
             </View>
             <View style={{height:100,width:"auto",borderColor:"#ddd",borderWidth:0.5,borderRadius:10,marginTop:32,overflow:"hidden"}}>
