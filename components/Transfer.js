@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 const Transfer = () => {
     return (
         <View>
-            <Text>Transfer</Text>
+            <Text>transfer</Text>
         </View>
     )
 }

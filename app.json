@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "coinbase-react_native-clone",
-    "slug": "coinbase-react_native-clone",
+    "name": "coinbase-clone",
+    "slug": "coinbase-clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +17,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-xxxxxx"
+      }
     },
     "android": {
       "adaptiveIcon": {
