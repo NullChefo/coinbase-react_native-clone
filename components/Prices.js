@@ -57,9 +57,10 @@ const Prices = () => {
                     </View>
 
                     <View style={{paddingTop:20}}>
-                        <View style={styles.listTab}>
+
+                        <View style={styles.listTab  } >
                                 {listTab.map((e)=>(
-                                    <TouchableOpacity style={[styles.btntab,status===e.status&&styles.btnTabActive]}
+                                    <TouchableOpacity style={[styles.btnTab,status==e.status&&styles.btnTabActive] }
                                     
                                     onPress={()=>setStatusFilter(e.status)}>
                                             <Text style={{fontSize:12,fontWeight:"bold"}}>{e.status}</Text>
@@ -117,7 +118,7 @@ const styles=StyleSheet.create({
         backgroundColor:"white",
         flexDirection:"row"
     },
-    btntab:{
+    btnTab:{
         width:Dimensions.get("window").width/4,
         flexDirection:"row",
         padding:10,

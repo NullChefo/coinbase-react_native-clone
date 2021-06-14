@@ -24,7 +24,7 @@ const Settings = () => {
       <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
             <View>
                 <Text style={{color:"#5d616f",fontSize:14,fontWeight:"500"}}>THE USER EMAIL</Text>
-                <Text style={{color:"090c0d",fontSize:29,fontWeight:"bold",paddingTop:5}}>AR</Text>
+                <Text style={{color:"#090c0d",fontSize:29,fontWeight:"bold",paddingTop:5}}>AR</Text>
             </View>
             <View style={{height:100,width:"auto",borderColor:"#ddd",borderWidth:0.5,borderRadius:10,marginTop:32,overflow:"hidden"}}>
                 <View style={{paddingTop:15,paddingHorizontal:12,flexDirection:"row",alignItems:"center"}}>
